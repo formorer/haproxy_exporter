@@ -5,3 +5,4 @@ haproxy_exporter
 *.test
 *.mprof
 *-stamp
+*.rpm
