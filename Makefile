@@ -42,6 +42,10 @@ build: promu
 	@echo ">> building binaries"
 	@$(PROMU) build --prefix $(PREFIX)
 
+rpm: build
+	@echo ">> building rpm"
+	@rpmbuild -bb --define "_sourcedir $(CURDIR)" --define "_rpmdir $(CURDIR)" --define "_build_name_fmt %%{NAME}-%%{VERSION}-%%{RELEASE}.%%{ARCH}.rpm" haproxy_exporter.spec
+
 tarball: promu
 	@echo ">> building release tarball"
 	@$(PROMU) tarball --prefix $(PREFIX) $(BIN_DIR)

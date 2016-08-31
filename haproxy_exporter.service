@@ -1,0 +1,10 @@
+[Unit]
+Description=Haproxy Exporter
+
+[Service]
+User=prometheus
+EnvironmentFile=-/etc/default/haproxy_exporter
+ExecStart=/usr/bin/haproxy_exporter -haproxy.scrape-uri=${URI}
+
+[Install]
+WantedBy=default.target
